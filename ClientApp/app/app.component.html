@@ -1,0 +1,102 @@
+<div class=" form p-3">
+    <ng-template [ngIf]="outForm == null" [ngIfElse]="out">
+        <form class="rounded" [formGroup]="group" (submit)="onSubmit()">
+            <div id="img" class="my-2">Напишите нам</div>
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input class="form-control" type="text" id="name" formControlName="name" [(ngModel)]="form.name" />
+            </div>
+            <div class="error alert-warning my-2 p-2 text-center rounded"
+                 *ngIf="group.controls['name'].hasError('required') && group.controls['name'].touched">
+                Поле обязательно для заполнения
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input class="form-control" type="text" id="email" formControlName="email" [(ngModel)]="form.email" />
+            </div>
+            <div class="error alert-warning my-2 p-2 text-center rounded"
+                 *ngIf="group.controls['email'].hasError('email') && group.controls['email'].touched">
+                Введите валидный адрес почты
+            </div>
+            <div class="error alert-warning my-2 p-2 text-center rounded"
+                 *ngIf="group.controls['email'].hasError('required') && group.controls['email'].touched">
+                Поле обязательно для заполнения
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input class="form-control" type="text" id="phone" [textMask]="{mask: mask}" formControlName="phone" [(ngModel)]="form.phone" />
+            </div>
+            <div class="error alert-warning my-2 p-2 text-center rounded"
+                 *ngIf="group.controls['phone'].hasError('minLength') && group.controls['phone'].touched">
+                Введите валидный номер телефона
+            </div>
+            <div class="error alert-warning my-2 p-2 text-center rounded"
+                 *ngIf="group.controls['phone'].hasError('required') && group.controls['phone'].touched">
+                Поле обязательно для заполнения
+            </div>
+
+
+            <div class="form-group">
+                <label for="topic">Тема:</label>
+                <select class="form-control" type="text" id="topic" formControlName="topic" [(ngModel)]="form.topic">
+                    <!--<option *ngFor="let x of topics">{{x.mess}}</option>-->
+                    <option>Техподдержка</option>
+                    <option>Продажи</option>
+                    <option>Другое</option>
+                </select>
+            </div>
+            <div class="error alert-warning my-2 p-2 text-center rounded"
+                 *ngIf="group.controls['topic'].hasError('required') && group.controls['topic'].touched">
+                Поле обязательно для заполнения
+            </div>
+
+            <div class="form-group">
+                <label for="mess">Ваше сообщение:</label>
+                <textarea class="form-control" type="text" id="mess" cols="30" rows="10" formControlName="mess" [(ngModel)]="form.mess"></textarea>
+            </div>
+            <div class="error alert-warning my-2 p-2 text-center rounded"
+                 *ngIf="group.controls['mess'].hasError('required') && group.controls['mess'].touched">
+                Поле обязательно для заполнения
+            </div>
+
+            <re-captcha class="mx-auto" required (resolved)="resolved($event)" siteKey="6Lf7l9gUAAAAALanSasEuPX5UPUPRW18Kns9UL2q" formControlName="recaptcha"></re-captcha>
+
+            <button type="submit" class="btn btn-primary" [disabled]="group.invalid">Отправить</button>
+
+        </form>
+    </ng-template>
+
+    <ng-template #out>
+        <div>
+            <label>Имя:</label>
+            <p>{{ outForm.user.name }}</p>
+            <br />
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <p>{{ outForm.user.email }}</p>
+            <br />
+        </div>
+
+        <div>
+            <label>Телефон:</label>
+            <p>{{ outForm.user.phone }}</p>
+            <br />
+        </div>
+
+        <div>
+            <label>Тема:</label>
+            <p>{{ outForm.topic.topic }}</p>
+            <br />
+        </div>
+
+        <div>
+            <label>Ваше сообщение:</label>
+            <p>{{ outForm.mess }}</p>
+            <br />
+        </div>
+    </ng-template>
+</div>

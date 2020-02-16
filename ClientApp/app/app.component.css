@@ -1,0 +1,61 @@
+:host {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+/*width: 40px;
+display: inline-block;*/
+}
+
+re-captcha {
+    display: table;
+    margin-bottom: 10px;
+}
+
+input.ng-touched.ng-invalid{
+  border-color: red;
+}
+
+.error{
+  color: red;
+}
+
+.form {
+    border-radius: 10px;
+}
+
+.form-control {
+    width:85%;
+    display:inline;
+}
+
+.form-group {
+    clear: both;
+    text-align: right;
+}
+
+label {
+    float: left;
+}
+
+.form {
+    background-color: lightgrey;
+    width: 800px;
+}
+
+#img {
+    font-family: Arial, Helvetica, Verdana, sans-serif; /* Гарнитура шрифта */
+    font-size: 200%; /* Размер текста */
+    font-weight: lighter; /* Светлое начертание */
+    color: white;
+    text-align:start;
+    padding-left: 50px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-image: url("/img/line.svg");
+    position: relative;
+    right: 52px;
+}
